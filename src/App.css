@@ -1,3 +1,13 @@
 .bg-lightblue{
     background-color: lightblue;
 }
+.card-Efect {
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+    cursor: default;
+    transition: all 500ms ease;
+  }
+  .card-Efect:hover {
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+    transform: translateY(-1%);
+   
+  }

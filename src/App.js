@@ -4,11 +4,15 @@ import { Button, Card } from "react-bootstrap";
 import celeste from "../src/img/celeste.jpg";
 import "../src/App.css";
 import Form from "react-bootstrap/Form";
+import Rosa from "./components/Rosa";
+import Violeta from "./components/Violeta";
+import Celeste from "./components/Celeste";
+
 
 const App = () => {
   return (
     <section className="py-5 container ">
-      <article className="rounded border border-dark">
+      <article className="rounded border border-dark card-Efect">
         <div className="py-3 ps-5 pb-4">
           <h2 className="display-6">Administrar colores</h2>
         </div>
@@ -35,6 +39,12 @@ const App = () => {
             Guardar
           </Button>
         </div>
+      </article>
+      <article className="row py-5">
+          <div className="col-12 col-md-4 "><Celeste></Celeste></div>
+          <div className="col-12 col-md-4 py-5 py-md-0"><Rosa></Rosa></div>
+          <div className="col-12 col-md-4 "><Violeta></Violeta></div>
+
       </article>
     </section>
   );
