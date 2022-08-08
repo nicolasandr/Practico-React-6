@@ -2,11 +2,11 @@ import React from "react";
 import celeste from "../img/celeste.jpg";
 import { Button, Card } from "react-bootstrap";
 import "../App.css";
-const Celeste = () => {
+const Celeste = (props) => {
   return (
-    <section className="rounded border border-dark card-Efect">
+    <section className=" rounded border border-dark card-Efect">
       <div className="py-2 text-center">
-        <h3>Celeste</h3>
+        <h3>{props.colorCargado}</h3>
       </div>
       <div className=" bg-lightblue text-center py-4 mx-0">
         <div>
@@ -18,7 +18,7 @@ const Celeste = () => {
         </div>
       </div>
       <div className="py-3 text-center">
-        <Button variant="danger" className="p-3">
+        <Button variant="danger" className="p-3" onClick={()=>props.borrarColor(props.colorCargado)}>
           Borrar
         </Button>
       </div>
