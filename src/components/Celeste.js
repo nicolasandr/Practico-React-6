@@ -4,6 +4,7 @@ import { Button, Card } from "react-bootstrap";
 import "../App.css";
 const Celeste = (props) => {
   return (
+    <div className="col-4">
     <section className=" rounded border border-dark card-Efect">
       <div className="py-2 text-center">
         <h3>{props.colorCargado}</h3>
@@ -23,6 +24,7 @@ const Celeste = (props) => {
         </Button>
       </div>
     </section>
+    </div>
   );
 };
 

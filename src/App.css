@@ -11,3 +11,13 @@
     transform: translateY(-1%);
    
   }
+.dimension-tarjeta-color{
+  width: 100px;
+  height: 100px;
+}
+.container-color{
+  
+  width: 40%;
+  padding-top: 40%;
+
+}

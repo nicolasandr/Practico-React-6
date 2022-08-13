@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-// import Rosa from "./Rosa";
-// import Violeta from "./Violeta";
-// import Celeste from "./Celeste";
-import { Button, Card } from "react-bootstrap";
-import celeste from "../img/celeste.jpg";
+import { Button } from "react-bootstrap";
 import ListaColores from "./ListaColores";
+import { SketchPicker } from "react-color";
 
 const Formulario = () => {
   const [arregloColor, setarregloColor] = useState([]);
   const [color, setcolor] = useState("");
+
+  const [colores, setcolores] = useState("#000");
+  const [showColorPiker, setshowColorPiker] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,12 +18,14 @@ const Formulario = () => {
     setcolor("");
   };
 
-//borrar un color 
-const borrarColor = (color) =>{
-  let arregloModificado = arregloColor.filter((elemento)=>{return elemento != color});
-  //actualizar state
-  setarregloColor (arregloModificado);
-}
+  //borrar un color
+  const borrarColor = (color) => {
+    let arregloModificado = arregloColor.filter((elemento) => {
+      return elemento !== color;
+    });
+    //actualizar state
+    setarregloColor(arregloModificado);
+  };
 
   return (
     <section className="py-5 container ">
@@ -32,13 +34,28 @@ const borrarColor = (color) =>{
           <div className="py-3 ps-5 pb-4">
             <h2 className="display-6">Administrar colores</h2>
           </div>
-          <div className="row container bg-lightblue mx-0">
-            <div className="col-md-4  p-5 p-md-5 text-center">
-              <Card.Img
-                className="w-75 rounded border border-dark "
-                variant="top"
-                src={celeste}
-              />
+          <div className="row py-5 container bg-lightblue mx-0">
+            <div className="col-md-4 p-2 p-md-2 text-center">
+              <div>
+                <div
+                  className="container-color"
+                  style={{ backgroundColor: `${colores}` }}
+                  onClick={() =>
+                    setshowColorPiker((showColorPiker) => !showColorPiker)
+                  }
+                >
+                  {showColorPiker}
+                </div>
+
+                {showColorPiker && (
+            
+                  <SketchPicker
+                    color={colores}
+                    onChange={(updatedCpolor) => setcolores(updatedCpolor.hex)}
+                  ></SketchPicker>
+                
+                )}
+              </div>
             </div>
 
             <div className="col-md-8 d-flex align-items-center pe-md-5 pb-4">
@@ -57,12 +74,12 @@ const borrarColor = (color) =>{
             </Button>
           </div>
         </Form>
-        
       </article>
       <div className="py-5">
-       
-          <ListaColores arregloColor={arregloColor} borrarColor = { borrarColor }></ListaColores>
-      
+        <ListaColores
+          arregloColor={arregloColor}
+          borrarColor={borrarColor}
+        ></ListaColores>
       </div>
     </section>
   );
