@@ -13,7 +13,6 @@ const Formulario = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("prueba de submit");
     setarregloColor([...arregloColor, color]);
     setcolor("");
   };
