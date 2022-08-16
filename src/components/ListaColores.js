@@ -1,13 +1,13 @@
 import React from "react";
 
-import Celeste from "./Celeste";
+import TarjetaColor from "./TarjetaColor";
 
 const ListaColores = (props) => {
   return (
-    <div className="row w-100">
+    <div className="row ">
    
         {props.arregloColor.map((item, posicion) => (
-          <Celeste key={posicion} colorCargado={item} borrarColor={props.borrarColor}></Celeste>
+          <TarjetaColor key={posicion} colorCargado={item} borrarColor={props.borrarColor} arreglobgcolores={props.arreglobgcolores[posicion]}></TarjetaColor>
         ))}
     
     </div>

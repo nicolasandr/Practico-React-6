@@ -6,24 +6,27 @@ import { SketchPicker } from "react-color";
 
 const Formulario = () => {
   const [arregloColor, setarregloColor] = useState([]);
-  const [color, setcolor] = useState("");
+  const [color, setcolor] = useState('');
 
-  const [colores, setcolores] = useState("#000");
+  const [arreglobgcolores,  setarregloBgColores] = useState([]);
+  const [bgColores,setBgColores]=useState('#000');
+
   const [showColorPiker, setshowColorPiker] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setarregloColor([...arregloColor, color]);
     setcolor("");
+    setarregloBgColores([...arreglobgcolores,bgColores]);
   };
 
-  //borrar un color
-  const borrarColor = (color) => {
-    let arregloModificado = arregloColor.filter((elemento) => {
-      return elemento !== color;
-    });
+    //borrar un color
+    const borrarColor = (color,bgColores) => {
+    let arregloColorModificado = arregloColor.filter((elemento) => {return elemento !== color;});
+    let arregloBgColorModificado = arreglobgcolores.filter((elemento)=>{return elemento !== bgColores;});
     //actualizar state
-    setarregloColor(arregloModificado);
+    setarregloColor(arregloColorModificado);
+    setarregloBgColores(arregloBgColorModificado);
   };
 
   return (
@@ -38,7 +41,7 @@ const Formulario = () => {
               <div>
                 <div
                   className="container-color"
-                  style={{ backgroundColor: `${colores}` }}
+                  style={{ backgroundColor: `${bgColores}` }}
                   onClick={() =>
                     setshowColorPiker((showColorPiker) => !showColorPiker)
                   }
@@ -47,12 +50,10 @@ const Formulario = () => {
                 </div>
 
                 {showColorPiker && (
-            
                   <SketchPicker
-                    color={colores}
-                    onChange={(updatedCpolor) => setcolores(updatedCpolor.hex)}
+                    color={bgColores}
+                    onChange={(updatedCpolor) =>  setBgColores(updatedCpolor.hex)}
                   ></SketchPicker>
-                
                 )}
               </div>
             </div>
@@ -77,6 +78,7 @@ const Formulario = () => {
       <div className="py-5">
         <ListaColores
           arregloColor={arregloColor}
+          arreglobgcolores={arreglobgcolores}
           borrarColor={borrarColor}
         ></ListaColores>
       </div>
